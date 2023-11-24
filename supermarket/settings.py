@@ -32,6 +32,7 @@ AUTH_USER_MODEL = 'supermarket_proj.CustomUser'
 INSTALLED_APPS = [
     "rest_framework",
     "supermarket_proj",
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +53,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'supermarket.urls'
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "http://localhost:3000",
+]
 
 TEMPLATES = [
     {
