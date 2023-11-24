@@ -4,12 +4,11 @@ from supermarket import settings
 
 
 class CustomUser(AbstractUser):
-    # age = models.PositiveIntegerField(null=True)
-    # city = models.CharField(max_length=255, null=True)
+    age = models.PositiveIntegerField(null=True)
+    city = models.CharField(max_length=255)
 
     def __str__(self):
         return self.username
-
 
 class Product(models.Model):
     name = models.CharField(max_length=255)
