@@ -4,8 +4,8 @@ from supermarket import settings
 
 
 class CustomUser(AbstractUser):
-    age = models.PositiveIntegerField(null=True)
-    city = models.CharField(max_length=255)
+    # age = models.PositiveIntegerField(null=True)
+    # city = models.CharField(max_length=255, null=True)
 
     def __str__(self):
         return self.username
@@ -24,16 +24,19 @@ class Product(models.Model):
 class Cart(models.Model):
     is_paid = models.BooleanField(default=False)
     create_date = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
 
     def __str__(self):
         return f"Cart for {self.user.username}"
 
 
 class CartItem(models.Model):
-    cart = models.ForeignKey('Cart', related_name='cartitems', on_delete=models.CASCADE, null=True)
-    product = models.ForeignKey('Product', related_name='products', on_delete=models.CASCADE, null=True)
-    quantity = models.FloatField(default=0)
+    cart = models.ForeignKey(
+        'Cart', related_name='cartitems', on_delete=models.CASCADE, null=True)
+    product = models.OneToOneField(
+        'Product', related_name='products', on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return f"there is {self.quantity} of {self.product.name} in ({self.cart.user.username}'s Cart)"
