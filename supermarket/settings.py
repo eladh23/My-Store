@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xj#abdl1&%r@i_qf*z9w-iy-p*+^ip05ddnff(x^zt0@1!unzq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['elad-back-store.onrender.com']
+ALLOWED_HOSTS = ["*"]
 
 AUTH_USER_MODEL = 'supermarket_proj.CustomUser'
 
@@ -55,8 +55,9 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'supermarket.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    "https://elad-back-store.onrender.com"
+    "https://elad-back-store.onrender.com",
     "http://localhost:3000",
+    "http://127.0.0.1",
 ]
 
 TEMPLATES = [

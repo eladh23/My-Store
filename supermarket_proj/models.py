@@ -35,7 +35,7 @@ class CartItem(models.Model):
     cart = models.ForeignKey(
         'Cart', related_name='cartitems', on_delete=models.CASCADE, null=True)
     product = models.OneToOneField(
-        'Product', related_name='products', on_delete=models.CASCADE)
+        'Product', related_name='products', on_delete=models.CASCADE,null=True)
     quantity = models.PositiveIntegerField(default=0)
 
     def __str__(self):
