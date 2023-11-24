@@ -55,7 +55,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'supermarket.urls'
 
 CORS_ALLOWED_ORIGINS = [
-    'elad-back-store.onrender.com',
+    "https://elad-back-store.onrender.com"
     "http://localhost:3000",
 ]
 
